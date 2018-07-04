@@ -1,4 +1,4 @@
-package se04869.vn.edu.fpt.prm391_assg;
+package se04869.vn.edu.fpt.prm391_assg.Helper;
 
 
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import se04869.vn.edu.fpt.prm391_assg.Model.Article;
+import se04869.vn.edu.fpt.prm391_assg.R;
 
 public class MyAdapter extends ArrayAdapter<Article> {
 

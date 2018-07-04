@@ -1,9 +1,11 @@
-package se04869.vn.edu.fpt.prm391_assg;
+package se04869.vn.edu.fpt.prm391_assg.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
+
+import se04869.vn.edu.fpt.prm391_assg.R;
 
 public class WebActivity extends Activity {
 
