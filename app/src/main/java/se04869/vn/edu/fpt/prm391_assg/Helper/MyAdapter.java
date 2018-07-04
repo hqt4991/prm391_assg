@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,10 +40,12 @@ public class MyAdapter extends ArrayAdapter<Article> {
         // 3. Get the two text view from the headLineView
         TextView txvTitle = headLineView.findViewById(R.id.txvTitle);
         TextView txvSource = headLineView.findViewById(R.id.txvSource);
+        ImageView imvUrlImage = headLineView.findViewById(R.id.imvUrlImage);
 
         // 4. Set the text for textView
         txvTitle.setText(articles.get(position).getTitle());
         txvSource.setText(articles.get(position).getSource());
+        Picasso.get().load(articles.get(position).getImageUrl()).into(imvUrlImage);
 
         // 5. return headLineView
         return headLineView;

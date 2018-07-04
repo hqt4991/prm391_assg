@@ -13,12 +13,12 @@ import se04869.vn.edu.fpt.prm391_assg.Model.Article;
 
 public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> {
 
-    public AsyncResponse delegate;
-    private String callingActivity;
-
     public interface AsyncResponse {
         void processFinish(ArrayList<Article> output);
     }
+
+    public AsyncResponse delegate;
+    private String callingActivity;
 
     public HeadlineGetter(AsyncResponse delegate, String callingActivity){
         this.delegate = delegate;
