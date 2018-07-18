@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,12 +21,14 @@ public class MyAdapter extends ArrayAdapter<Article> {
 
     private Context context;
     private ArrayList<Article> articles;
+    private Button btnRead;
 
     public MyAdapter(Context context, ArrayList<Article> articles) {
         super(context, R.layout.listview_headlines, articles);
         this.context = context;
         this.articles = articles;
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
