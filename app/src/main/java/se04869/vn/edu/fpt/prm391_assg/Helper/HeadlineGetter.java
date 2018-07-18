@@ -13,14 +13,9 @@ import se04869.vn.edu.fpt.prm391_assg.Model.Article;
 
 public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> {
 
-    public interface AsyncResponse {
-        void processFinish(ArrayList<Article> output);
-    }
-
     public AsyncResponse delegate;
     private String callingActivity;
-
-    public HeadlineGetter(AsyncResponse delegate, String callingActivity){
+    public HeadlineGetter(AsyncResponse delegate, String callingActivity) {
         this.delegate = delegate;
         this.callingActivity = callingActivity;
     }
@@ -44,7 +39,7 @@ public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> 
                 JSONObject in = new JSONObject(jsonStr);
                 JSONArray articlesJSONArray = in.getJSONArray("articles");
 
-                for (int i = 0; i < articlesJSONArray.length(); i++){
+                for (int i = 0; i < articlesJSONArray.length(); i++) {
 
                     ar = new Article();
                     JSONObject articleJSONObject = articlesJSONArray.getJSONObject(i);
@@ -72,6 +67,10 @@ public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> 
     protected void onPostExecute(ArrayList<Article> articles) {
         super.onPostExecute(articles);
         delegate.processFinish(articles);
+    }
+
+    public interface AsyncResponse {
+        void processFinish(ArrayList<Article> output);
     }
 
 }

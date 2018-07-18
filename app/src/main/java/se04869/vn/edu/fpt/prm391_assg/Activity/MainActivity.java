@@ -44,18 +44,14 @@ public class MainActivity extends AppCompatActivity {
         Drawer result = new DrawerBuilder()
                 .withActivity(this)
                 .addDrawerItems(
-                        item0,
-                        item1,
-                        item2,
-                        item3,
-                        item4
+                        item0, item1, item2, item3, item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         String url = null;
 
-                        switch (position){
+                        switch (position) {
                             case 0:
                                 url = URLHEADLINES;
                                 break;

@@ -17,7 +17,7 @@ public class HttpHandler {
     public HttpHandler() {
     }
 
-    public String requestJson (String urlString){
+    public String requestJson(String urlString) {
         String response = null;
 
         try {
@@ -38,13 +38,13 @@ public class HttpHandler {
         return response;
     }
 
-    private String convertInput(InputStream in){
+    private String convertInput(InputStream in) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder builder = new StringBuilder();
         String line;
 
         try {
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 builder.append(line).append('\n');
             }
         } catch (IOException e) {
