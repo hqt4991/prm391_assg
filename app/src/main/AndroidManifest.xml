@@ -11,16 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".Activity.MainActivity"
             android:theme="@style/MaterialDrawerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.WebActivity"></activity>
+
+        <activity
+            android:name=".Activity.WebActivity"
+            android:theme="@style/MaterialDrawerTheme" />
     </application>
 
 </manifest>

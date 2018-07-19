@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
@@ -19,9 +20,13 @@ import se04869.vn.edu.fpt.prm391_assg.Helper.MyAdapter;
 import se04869.vn.edu.fpt.prm391_assg.Model.Article;
 import se04869.vn.edu.fpt.prm391_assg.R;
 
+import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLBBC;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLBUSINESS;
+import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLCNN;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLENTERTAINMENT;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLHEADLINES;
+import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLNYTIMES;
+import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLREUTERS;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLSPORTS;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLTECH;
 
@@ -36,15 +41,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         PrimaryDrawerItem item0 = new PrimaryDrawerItem().withName("Headlines").withIdentifier(0);
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName("Business");
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName("Sports");
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName("Technology");
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName("Entertainment");
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName("Business");
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName("Sports");
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName("Technology");
+        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withName("Entertainment");
+
+        PrimaryDrawerItem item7 = new PrimaryDrawerItem().withName("BBC News");
+        PrimaryDrawerItem item8 = new PrimaryDrawerItem().withName("CNN");
+        PrimaryDrawerItem item9 = new PrimaryDrawerItem().withName("Reuters");
+        PrimaryDrawerItem item10 = new PrimaryDrawerItem().withName("NY Times");
 
         Drawer result = new DrawerBuilder()
                 .withActivity(this)
                 .addDrawerItems(
-                        item0, item1, item2, item3, item4
+                    item0,
+                    new DividerDrawerItem(),
+                    item2, item3, item4, item5,
+                    new DividerDrawerItem(),
+                    item7, item8, item9, item10
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -55,17 +69,29 @@ public class MainActivity extends AppCompatActivity {
                             case 0:
                                 url = URLHEADLINES;
                                 break;
-                            case 1:
+                            case 2:
                                 url = URLBUSINESS;
                                 break;
-                            case 2:
+                            case 3:
                                 url = URLSPORTS;
                                 break;
-                            case 3:
+                            case 4:
                                 url = URLTECH;
                                 break;
-                            case 4:
+                            case 5:
                                 url = URLENTERTAINMENT;
+                                break;
+                            case 7:
+                                url = URLBBC;
+                                break;
+                            case 8:
+                                url = URLCNN;
+                                break;
+                            case 9:
+                                url = URLREUTERS;
+                                break;
+                            case 10:
+                                url = URLNYTIMES;
                                 break;
                         }
 
@@ -96,7 +122,5 @@ public class MainActivity extends AppCompatActivity {
 
         result.setSelection(0, true);
     }
-
-    //some comment
 
 }
