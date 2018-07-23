@@ -15,6 +15,7 @@ public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> 
 
     public AsyncResponse delegate;
     private String callingActivity;
+
     public HeadlineGetter(AsyncResponse delegate, String callingActivity) {
         this.delegate = delegate;
         this.callingActivity = callingActivity;
@@ -28,11 +29,10 @@ public class HeadlineGetter extends AsyncTask<String, Void, ArrayList<Article>> 
     @Override
     protected ArrayList<Article> doInBackground(String... urls) {
 
-        HttpHandler handler = new HttpHandler();
-        String jsonStr = handler.requestJson(urls[0]);
+        String jsonStr = new HttpHandler().requestJson(urls[0]);
         ArrayList<Article> toReturn = new ArrayList<>();
         Article ar;
-        Log.i(callingActivity, "Response: " + jsonStr);
+        Log.d(callingActivity, "Response: " + jsonStr);
 
         if (jsonStr != null) {
             try {

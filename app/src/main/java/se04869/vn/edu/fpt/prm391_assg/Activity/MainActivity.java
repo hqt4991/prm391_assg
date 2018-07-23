@@ -16,6 +16,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import java.util.ArrayList;
 
 import se04869.vn.edu.fpt.prm391_assg.Helper.HeadlineGetter;
+import se04869.vn.edu.fpt.prm391_assg.Helper.HeadlineGetterRss;
 import se04869.vn.edu.fpt.prm391_assg.Helper.MyAdapter;
 import se04869.vn.edu.fpt.prm391_assg.Model.Article;
 import se04869.vn.edu.fpt.prm391_assg.R;
@@ -29,6 +30,7 @@ import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLNYTIMES;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLREUTERS;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLSPORTS;
 import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLTECH;
+import static se04869.vn.edu.fpt.prm391_assg.Helper.AppConfig.URLVNEXPRESS;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem item8 = new PrimaryDrawerItem().withName("CNN");
         PrimaryDrawerItem item9 = new PrimaryDrawerItem().withName("Reuters");
         PrimaryDrawerItem item10 = new PrimaryDrawerItem().withName("NY Times");
+        PrimaryDrawerItem item11 = new PrimaryDrawerItem().withName("VnExpress");
+
 
         Drawer result = new DrawerBuilder()
                 .withActivity(this)
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     new DividerDrawerItem(),
                     item2, item3, item4, item5,
                     new DividerDrawerItem(),
-                    item7, item8, item9, item10
+                    item7, item8, item9, item10, item11
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -93,15 +97,32 @@ public class MainActivity extends AppCompatActivity {
                             case 10:
                                 url = URLNYTIMES;
                                 break;
+                            case 11:
+                                url = URLVNEXPRESS;
+                                break;
                         }
 
-                        new HeadlineGetter(new HeadlineGetter.AsyncResponse() {
-                            @Override
-                            public void processFinish(ArrayList<Article> output) {
-                                MyAdapter adapter = new MyAdapter(MainActivity.this, output);
-                                lsvHeadlines.setAdapter(adapter);
-                            }
-                        }, MainActivity.class.getSimpleName()).execute(url);
+                        if (position < 11){
+
+                            new HeadlineGetter(new HeadlineGetter.AsyncResponse() {
+                                @Override
+                                public void processFinish(ArrayList<Article> output) {
+                                    MyAdapter adapter = new MyAdapter(MainActivity.this, output);
+                                    lsvHeadlines.setAdapter(adapter);
+                                }
+                            }, MainActivity.class.getSimpleName()).execute(url);
+
+                        } else if (position >= 11){
+
+                            new HeadlineGetterRss(new HeadlineGetter.AsyncResponse() {
+                                @Override
+                                public void processFinish(ArrayList<Article> output) {
+                                    MyAdapter adapter = new MyAdapter(MainActivity.this, output);
+                                    lsvHeadlines.setAdapter(adapter);
+                                }
+                            }, MainActivity.class.getSimpleName()).execute(url);
+
+                        }
 
                         return true;
                     }
@@ -121,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         result.setSelection(0, true);
+
     }
 
 }

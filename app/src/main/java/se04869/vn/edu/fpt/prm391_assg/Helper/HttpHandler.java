@@ -25,7 +25,27 @@ public class HttpHandler {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(conn.getInputStream());
-            response = convertInput(in);
+            response = convertInputToJson(in);
+            conn.disconnect();
+            in.close();
+
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "MalformedURLException: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.getMessage());
+        }
+
+        return response;
+    }
+
+    public InputStream requestRss(String urlString) {
+        InputStream in = null;
+
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            in = new BufferedInputStream(conn.getInputStream());
             conn.disconnect();
 
         } catch (MalformedURLException e) {
@@ -34,11 +54,10 @@ public class HttpHandler {
             Log.e(TAG, "IOException: " + e.getMessage());
         }
 
-
-        return response;
+        return in;
     }
 
-    private String convertInput(InputStream in) {
+    private String convertInputToJson(InputStream in) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder builder = new StringBuilder();
         String line;

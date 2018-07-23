@@ -16,5 +16,6 @@ public class AppConfig {
     public static final String URLREUTERS = "https://newsapi.org/v2/top-headlines?sources=reuters&apiKey=" + apiKey;
     public static final String URLNYTIMES = "https://newsapi.org/v2/top-headlines?sources=the-new-york-times&apiKey=" + apiKey;
 
+    public static final String URLVNEXPRESS = "https://vnexpress.net/rss/tin-moi-nhat.rss";
 
 }
